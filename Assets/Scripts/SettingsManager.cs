@@ -7,13 +7,19 @@ public class SettingsManager : MonoBehaviour
 {
 
     public static string playernamestri;
+    public static string topscorestri;
+    public static int topscoreint;
 
     public Text playername;
+
+    public Text topScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        playername.text = playernamestri;   
+        //topscoreint = 0;
+        playername.text = playernamestri;
+        topScore.text = "Top Score: " + topscorestri;
     }
 
     // Update is called once per frame
