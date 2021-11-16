@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -26,5 +27,34 @@ public class SettingsManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    [System.Serializable]
+    class SaveData
+    {
+        public int savedScore;       
+    }
+
+    public void SaveScore()
+    {
+        SaveData data = new SaveData();
+        data.savedScore = SettingsManager.topscoreint;
+
+        string json = JsonUtility.ToJson(data);
+
+        File.WriteAllText(Application.persistentDataPath + "/savefil.json", json);
+    }
+
+    public void LoadScore()
+    {
+        string path = Application.persistentDataPath + "/savefile.json";
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+            topscoreint = data.savedScore;
+        }
+
     }
 }

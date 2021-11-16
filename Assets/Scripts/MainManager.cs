@@ -94,12 +94,5 @@ public class MainManager : MonoBehaviour
 
     
 
-    [System.Serializable]
-    class SaveData
-    {
-        //public int topscorestri;
-
-       
-       
-    }
+   
 }
